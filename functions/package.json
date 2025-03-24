@@ -1,31 +1,25 @@
 {
-  "name": "quickstart-js-functions",
-  "version": "1.0.0",
-  "description": "JavaScript quickstarts for Firebase Functions.",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/firebase/quickstart-js.git"
-  },
-  "author": "",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/firebase/quickstart-js/issues"
+  "name": "functions",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
   },
   "engines": {
-    "npm": ">=9.0.0 <10.0.0",
-    "node": ">=18.0.0 <=20.0.0"
+    "node": "18"
   },
-  "homepage": "https://github.com/firebase/quickstart-js#readme",
-  "devDependencies": {
-    "typescript": "^5.1.6",
-    "vite": "^4.4.9"
-  },
-  "scripts": {
-    "dev": "cd public && vite",
-    "build": "npm --prefix functions run build && cd public && vite build",
-    "format": "prettier --write ."
-  },
+  "main": "lib/functions/src/index.js",
   "dependencies": {
-    "firebase": "^10.1.0"
-  }
+    "firebase-admin": "^11.8.0",
+    "firebase-functions": "^4.3.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.0",
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
 }
